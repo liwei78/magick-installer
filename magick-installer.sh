@@ -11,18 +11,18 @@ function download() {
   fi
 }
 
-mkdir magick-installer
+mkdir -p magick-installer
 cd magick-installer
 
 download http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.1.tar.gz
 download http://nongnu.askapache.com/freetype/freetype-2.4.3.tar.gz
 download http://sourceforge.net/projects/libpng/files/libpng15/older-releases/1.5.5/libpng-1.5.5.tar.gz
-download http://www.imagemagick.org/download/delegates/jpegsrc.v8b.tar.gz
+download https://srclibs.googlecode.com/files/jpegsrc.v8.tar.gz
 download http://download.osgeo.org/libtiff/tiff-3.9.4.tar.gz
-download http://voxel.dl.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
+download http://downloads.sourceforge.net/project/wvware/libwmf/0.2.8.4/libwmf-0.2.8.4.tar.gz
 download http://downloads.sourceforge.net/project/lcms/lcms/1.19/lcms-1.19.tar.gz
 download http://sourceforge.net/projects/ghostscript/files/GPL%20Ghostscript/9.04/ghostscript-9.04.tar.gz
-download http://voxel.dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
+download https://ghostscript.googlecode.com/files/ghostscript-fonts-std-8.11.tar.gz
 download ftp://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-6.6.7-0.tar.gz
 
 
@@ -51,10 +51,10 @@ sudo make install
 cd ..
 
 
-tar xzvf jpegsrc.v8b.tar.gz
-cd jpeg-8b
+tar xzvf jpegsrc.v8.tar.gz
+cd jpeg-8
 ln -s -f `which glibtool` ./libtool
-export MACOSX_DEPLOYMENT_TARGET=10.7
+export MACOSX_DEPLOYMENT_TARGET=10.8
 ./configure --enable-shared --prefix=/usr/local
 make clean
 make
@@ -114,6 +114,6 @@ sudo make install
 cd ..
 
 cd ..
-rm -Rf magick-installer
+# rm -Rf magick-installer
 
 echo "ImageMagick successfully installed!"
